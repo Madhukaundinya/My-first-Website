@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+  <title>Dr. Annapoorna – Homeopathy Specialist, Bengaluru</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,600;0,700;1,400&family=Lato:wght@300;400;700&display=swap" rel="stylesheet"/>
+  <style>
+    :root {
+      --cream: #fdf8f2;
+      --soft-green: #4a7c59;
+      --light-green: #d6eadf;
+      --pale-green: #eef7f1;
+      --gold: #c09a50;
+      --dark: #2c3e35;
+      --text: #3d4a42;
+      --muted: #7a8c82;
+      --white: #ffffff;
+      --shadow: 0 4px 24px rgba(74,124,89,0.10);
+      --radius: 16px;
+    }
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body { font-family: 'Lato', sans-serif; background: var(--cream); color: var(--text); overflow-x: hidden; }
+
+    /* NAV */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+      background: rgba(253,248,242,0.96); backdrop-filter: blur(8px);
+      border-bottom: 1px solid #e8f0eb;
+      display: flex; align-items: center; justify-content: space-between;
+      padding: 0 5%; height: 68px;
+      box-shadow: 0 2px 12px rgba(74,124,89,0.07);
+    }
+    .nav-logo { display: flex; align-items: center; gap: 10px; }
+    .nav-logo span { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--soft-green); font-weight: 700; }
+    nav ul { list-style: none; display: flex; gap: 2rem; }
+    nav ul li a {
+      text-decoration: none; color: var(--text); font-size: 0.88rem;
+      font-weight: 700; letter-spacing: 0.06em; text-transform: uppercase;
+      transition: color 0.2s; position: relative;
+    }
+    nav ul li a::after {
+      content: ''; position: absolute; bottom: -4px; left: 0; right: 0;
+      height: 2px; background: var(--gold); transform: scaleX(0); transition: transform 0.25s;
+    }
+    nav ul li a:hover { color: var(--soft-green); }
+    nav ul li a:hover::after { transform: scaleX(1); }
+    .nav-cta { background: var(--soft-green); color: var(--white) !important; padding: 8px 20px; border-radius: 30px; transition: background 0.2s !important; }
+    .nav-cta:hover { background: var(--dark) !important; }
+    .nav-cta::after { display: none !important; }
+
+    /* HERO */
+    #home {
+      min-height: 100vh; display: flex; align-items: center;
+      padding: 100px 5% 60px;
+      background: linear-gradient(135deg, #eef7f1 0%, #fdf8f2 55%, #fef9ee 100%);
+      position: relative; overflow: hidden;
+    }
+    #home::before {
+      content: ''; position: absolute; right: -80px; top: -80px;
+      width: 500px; height: 500px; border-radius: 50%;
+      background: radial-gradient(circle, rgba(74,124,89,0.08) 0%, transparent 70%);
+    }
+    .hero-inner { display: grid; grid-template-columns: 1fr 1fr; gap: 4rem; align-items: center; max-width: 1200px; margin: 0 auto; }
+    .hero-text .badge {
+      display: inline-block; background: var(--light-green); color: var(--soft-green);
+      padding: 6px 16px; border-radius: 30px; font-size: 0.78rem; font-weight: 700;
+      letter-spacing: 0.1em; text-transform: uppercase; margin-bottom: 1.2rem;
+    }
+    .hero-text h1 { font-family: 'Playfair Display', serif; font-size: clamp(2.2rem, 4vw, 3.3rem); line-height: 1.18; color: var(--dark); margin-bottom: 0.5rem; }
+    .hero-text h1 em { color: var(--soft-green); font-style: italic; }
+    .hero-text .quals { font-size: 0.95rem; color: var(--gold); font-weight: 700; letter-spacing: 0.05em; margin-bottom: 1.4rem; }
+    .hero-text p { font-size: 1.05rem; color: var(--muted); line-height: 1.75; margin-bottom: 2rem; max-width: 480px; }
+    .hero-btns { display: flex; gap: 1rem; flex-wrap: wrap; }
+    .btn-primary {
+      background: var(--soft-green); color: var(--white); padding: 14px 30px;
+      border-radius: 40px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+      letter-spacing: 0.04em; box-shadow: 0 6px 20px rgba(74,124,89,0.25);
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .btn-primary:hover { transform: translateY(-2px); box-shadow: 0 10px 28px rgba(74,124,89,0.32); }
+    .btn-outline {
+      border: 2px solid var(--soft-green); color: var(--soft-green); padding: 12px 28px;
+      border-radius: 40px; text-decoration: none; font-weight: 700; font-size: 0.9rem;
+      transition: background 0.2s, color 0.2s;
+    }
+    .btn-outline:hover { background: var(--soft-green); color: var(--white); }
+
+    .hero-card {
+      background: var(--white); border-radius: 24px; padding: 3rem 2.5rem;
+      box-shadow: var(--shadow); text-align: center;
+      animation: floatUp 6s ease-in-out infinite;
+    }
+    @keyframes floatUp { 0%,100% { transform: translateY(0); } 50% { transform: translateY(-10px); } }
+    .hero-avatar {
+      width: 130px; height: 130px; border-radius: 50%;
+      background: linear-gradient(135deg, var(--light-green), var(--pale-green));
+      margin: 0 auto 1.2rem; display: flex; align-items: center; justify-content: center;
+      font-size: 4rem; border: 4px solid var(--white); box-shadow: 0 6px 24px rgba(74,124,89,0.18);
+    }
+    .hero-card h3 { font-family: 'Playfair Display', serif; font-size: 1.4rem; color: var(--dark); margin-bottom: 0.3rem; }
+    .hero-card .card-quals { color: var(--gold); font-size: 0.82rem; font-weight: 700; margin-bottom: 1.2rem; letter-spacing: 0.06em; }
+    .stat-row { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.4rem; }
+    .stat-box { background: var(--pale-green); border-radius: 12px; padding: 1rem; }
+    .stat-box .num { font-family: 'Playfair Display', serif; font-size: 1.8rem; color: var(--soft-green); font-weight: 700; }
+    .stat-box .lbl { font-size: 0.75rem; color: var(--muted); font-weight: 700; text-transform: uppercase; letter-spacing: 0.06em; }
+
+    /* SECTIONS */
+    section { padding: 80px 5%; }
+    .section-header { text-align: center; margin-bottom: 3.5rem; }
+    .section-header .eyebrow { display: inline-block; color: var(--gold); font-size: 0.78rem; font-weight: 700; text-transform: uppercase; letter-spacing: 0.12em; margin-bottom: 0.6rem; }
+    .section-header h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.8rem, 3vw, 2.6rem); color: var(--dark); line-height: 1.25; }
+    .section-header p { color: var(--muted); font-size: 1rem; margin-top: 0.8rem; max-width: 560px; margin-left: auto; margin-right: auto; line-height: 1.7; }
+    .divider { width: 56px; height: 3px; background: linear-gradient(90deg, var(--soft-green), var(--gold)); border-radius: 2px; margin: 1rem auto 0; }
+    .inner { max-width: 1200px; margin: 0 auto; }
+
+    /* ADVANTAGES */
+    #homeopathy { background: var(--pale-green); }
+    .adv-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 1.6rem; }
+    .adv-card {
+      background: var(--white); border-radius: var(--radius); padding: 2rem 1.8rem;
+      box-shadow: var(--shadow); transition: transform 0.25s, box-shadow 0.25s;
+      border-top: 4px solid transparent;
+    }
+    .adv-card:hover { transform: translateY(-6px); box-shadow: 0 12px 36px rgba(74,124,89,0.14); border-top-color: var(--soft-green); }
+    .adv-icon { width: 56px; height: 56px; background: var(--light-green); border-radius: 14px; display: flex; align-items: center; justify-content: center; font-size: 1.6rem; margin-bottom: 1.2rem; }
+    .adv-card h3 { font-family: 'Playfair Display', serif; font-size: 1.15rem; color: var(--dark); margin-bottom: 0.6rem; }
+    .adv-card p { font-size: 0.92rem; color: var(--muted); line-height: 1.7; }
+
+    /* PRACTICE */
+    #practice { background: var(--cream); }
+    .practice-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 1.4rem; }
+    .practice-card {
+      background: var(--white); border-radius: var(--radius); padding: 1.8rem 1.5rem;
+      box-shadow: var(--shadow); display: flex; align-items: flex-start; gap: 1rem;
+      transition: transform 0.2s, box-shadow 0.2s;
+    }
+    .practice-card:hover { transform: translateY(-4px); box-shadow: 0 10px 30px rgba(74,124,89,0.12); }
+    .practice-icon { width: 46px; height: 46px; flex-shrink: 0; background: var(--light-green); border-radius: 12px; display: flex; align-items: center; justify-content: center; font-size: 1.3rem; }
+    .practice-card h4 { font-family: 'Playfair Display', serif; font-size: 1rem; color: var(--dark); margin-bottom: 0.3rem; }
+    .practice-card p { font-size: 0.83rem; color: var(--muted); line-height: 1.6; }
+
+    /* TESTIMONIALS */
+    #testimonials { background: var(--pale-green); }
+    .testi-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 1.6rem; }
+    .testi-card { background: var(--white); border-radius: var(--radius); padding: 2rem 1.8rem; box-shadow: var(--shadow); transition: transform 0.2s; }
+    .testi-card:hover { transform: translateY(-4px); }
+    .testi-quote { font-size: 3rem; color: var(--light-green); font-family: Georgia, serif; line-height: 1; margin-bottom: 0.5rem; }
+    .testi-card p { font-size: 0.95rem; color: var(--text); line-height: 1.75; margin-bottom: 1.5rem; font-style: italic; }
+    .testi-author { display: flex; align-items: center; gap: 0.8rem; }
+    .testi-avatar { width: 44px; height: 44px; border-radius: 50%; background: linear-gradient(135deg, var(--soft-green), var(--gold)); display: flex; align-items: center; justify-content: center; color: var(--white); font-weight: 700; font-size: 1rem; }
+    .testi-author .name { font-weight: 700; font-size: 0.9rem; color: var(--dark); }
+    .testi-author .meta { font-size: 0.78rem; color: var(--muted); }
+    .stars { color: var(--gold); font-size: 0.85rem; margin-bottom: 0.4rem; }
+
+    /* ABOUT */
+    #about { background: var(--cream); }
+    .about-inner { display: grid; grid-template-columns: 1fr 1.6fr; gap: 4rem; align-items: center; }
+    .about-visual { background: linear-gradient(160deg, var(--light-green) 0%, var(--pale-green) 100%); border-radius: 24px; padding: 2.5rem 2rem; text-align: center; box-shadow: var(--shadow); }
+    .about-avatar-big { width: 160px; height: 160px; border-radius: 50%; background: linear-gradient(135deg, var(--soft-green), #6dab83); margin: 0 auto 1.4rem; display: flex; align-items: center; justify-content: center; font-size: 5rem; border: 6px solid var(--white); box-shadow: 0 8px 32px rgba(74,124,89,0.22); }
+    .about-visual h3 { font-family: 'Playfair Display', serif; font-size: 1.5rem; color: var(--dark); margin-bottom: 0.2rem; }
+    .about-visual .quals-tag { font-size: 0.82rem; color: var(--gold); font-weight: 700; letter-spacing: 0.06em; }
+    .qual-badges { display: flex; flex-wrap: wrap; gap: 0.6rem; justify-content: center; margin-top: 1.4rem; }
+    .qual-badge { background: var(--white); color: var(--soft-green); padding: 6px 14px; border-radius: 20px; font-size: 0.8rem; font-weight: 700; box-shadow: 0 2px 8px rgba(74,124,89,0.12); }
+    .about-text h2 { font-family: 'Playfair Display', serif; font-size: clamp(1.7rem, 2.5vw, 2.3rem); color: var(--dark); line-height: 1.3; margin-bottom: 1.2rem; }
+    .about-text p { font-size: 0.97rem; color: var(--muted); line-height: 1.82; margin-bottom: 1rem; }
+    .about-highlights { display: grid; grid-template-columns: 1fr 1fr; gap: 1rem; margin-top: 1.8rem; }
+    .highlight-item { display: flex; align-items: flex-start; gap: 0.7rem; }
+    .hl-icon { width: 36px; height: 36px; flex-shrink: 0; background: var(--light-green); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .highlight-item span { font-size: 0.88rem; color: var(--text); font-weight: 600; line-height: 1.4; }
+
+    /* CONTACT */
+    #contact { background: linear-gradient(135deg, var(--dark) 0%, #2e4a38 100%); color: var(--white); }
+    #contact .section-header .eyebrow { color: var(--gold); }
+    #contact .section-header h2 { color: var(--white); }
+    #contact .section-header p { color: rgba(255,255,255,0.6); }
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; align-items: start; }
+    .contact-card { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); padding: 2rem 1.8rem; }
+    .contact-card h3 { font-family: 'Playfair Display', serif; font-size: 1.2rem; color: var(--gold); margin-bottom: 1.2rem; }
+    .contact-row { display: flex; gap: 0.8rem; margin-bottom: 1.2rem; align-items: flex-start; }
+    .c-icon { width: 38px; height: 38px; flex-shrink: 0; background: rgba(74,124,89,0.3); border-radius: 10px; display: flex; align-items: center; justify-content: center; font-size: 1rem; }
+    .c-label { font-size: 0.75rem; color: rgba(255,255,255,0.5); text-transform: uppercase; letter-spacing: 0.06em; }
+    .c-val { font-size: 0.95rem; color: var(--white); margin-top: 2px; line-height: 1.5; }
+    .map-box { background: rgba(255,255,255,0.07); border: 1px solid rgba(255,255,255,0.12); border-radius: var(--radius); height: 260px; display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 0.8rem; }
+    .map-box .map-icon { font-size: 2.8rem; }
+    .map-box p { font-size: 0.88rem; color: rgba(255,255,255,0.6); text-align: center; line-height: 1.6; }
+    .map-box a { font-size: 0.9rem; color: var(--gold); text-decoration: none; font-weight: 700; border: 1px solid var(--gold); padding: 8px 20px; border-radius: 30px; transition: background 0.2s; }
+    .map-box a:hover { background: var(--gold); color: var(--dark); }
+
+    /* FOOTER */
+    footer { background: var(--dark); border-top: 1px solid rgba(255,255,255,0.08); padding: 1.8rem 5%; text-align: center; font-size: 0.82rem; color: rgba(255,255,255,0.4); }
+    footer span { color: var(--gold); }
+
+    /* MOBILE */
+    @media (max-width: 768px) {
+      nav ul { display: none; }
+      .hero-inner, .about-inner, .contact-grid { grid-template-columns: 1fr; }
+      .hero-card { display: none; }
+      .about-highlights { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="nav-logo">
+    <span>🌿 Dr. Annapoorna</span>
+  </div>
+  <ul>
+    <li><a href="#home">Home</a></li>
+    <li><a href="#homeopathy">Homeopathy</a></li>
+    <li><a href="#practice">Practice</a></li>
+    <li><a href="#testimonials">Testimonials</a></li>
+    <li><a href="#about">About</a></li>
+    <li><a href="#contact" class="nav-cta">Contact</a></li>
+  </ul>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-inner inner">
+    <div class="hero-text">
+      <div class="badge">🌿 Holistic Healing · Bengaluru</div>
+      <h1>Heal Naturally with <em>Dr. Annapoorna</em></h1>
+      <p class="quals">BHMS &nbsp;·&nbsp; MD (Homeopathy) &nbsp;·&nbsp; SCPH</p>
+      <p>A trusted homeopathic specialist dedicated to restoring your health through personalised, gentle, and deeply effective natural remedies — treating the whole person, not just the symptoms.</p>
+      <div class="hero-btns">
+        <a href="#contact" class="btn-primary">Book an Appointment</a>
+        <a href="#about" class="btn-outline">Know Dr. Annapoorna</a>
+      </div>
+    </div>
+    <div class="hero-card">
+      <div class="hero-avatar">👩‍⚕️</div>
+      <h3>Dr. Annapoorna</h3>
+      <p class="card-quals">BHMS · MD · SCPH</p>
+      <p style="font-size:0.85rem;color:var(--muted)">Kodigehalli, Bengaluru</p>
+      <div class="stat-row">
+        <div class="stat-box"><div class="num">5+</div><div class="lbl">Years Exp.</div></div>
+        <div class="stat-box"><div class="num">300+</div><div class="lbl">Patients</div></div>
+        <div class="stat-box"><div class="num">20+</div><div class="lbl">Conditions</div></div>
+        <div class="stat-box"><div class="num">100%</div><div class="lbl">Natural</div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOMEOPATHY ADVANTAGES -->
+<section id="homeopathy">
+  <div class="inner">
+    <div class="section-header">
+      <div class="eyebrow">Why Homeopathy?</div>
+      <h2>The Gentle Power of Homeopathic Healing</h2>
+      <p>A 200-year-old holistic system of medicine that stimulates the body's own healing abilities — safely, gently, and permanently.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="adv-grid">
+      <div class="adv-card"><div class="adv-icon">🌱</div><h3>100% Natural & Safe</h3><p>Remedies are derived from natural substances — plants, minerals, and animal sources — making them safe for all ages including infants, pregnant women, and the elderly.</p></div>
+      <div class="adv-card"><div class="adv-icon">🎯</div><h3>Treats the Root Cause</h3><p>Homeopathy goes beyond masking symptoms. It addresses the underlying cause of disease to provide long-lasting relief rather than temporary suppression.</p></div>
+      <div class="adv-card"><div class="adv-icon">🧘</div><h3>Holistic Approach</h3><p>Each person is treated as a unique individual. Mental, emotional, and physical symptoms are all considered to select the most appropriate remedy.</p></div>
+      <div class="adv-card"><div class="adv-icon">🚫</div><h3>No Harmful Side Effects</h3><p>Unlike conventional drugs, homeopathic medicines are highly diluted and cause no toxic side effects, making long-term treatment completely safe.</p></div>
+      <div class="adv-card"><div class="adv-icon">💊</div><h3>No Drug Dependency</h3><p>Homeopathic remedies do not cause addiction or dependence. They strengthen the body's immunity so you can live free of recurring illness.</p></div>
+      <div class="adv-card"><div class="adv-icon">🌍</div><h3>Effective for Chronic Conditions</h3><p>Homeopathy has remarkable success in managing chronic diseases like asthma, arthritis, and skin conditions where conventional medicine offers limited relief.</p></div>
+      <div class="adv-card"><div class="adv-icon">👶</div><h3>Safe for Children</h3><p>Sweet pills with no harsh chemicals make homeopathy ideal for paediatric care — from colic and teething to recurring infections and behavioural concerns.</p></div>
+      <div class="adv-card"><div class="adv-icon">💰</div><h3>Cost-Effective Treatment</h3><p>Homeopathic treatment is affordable and accessible. Its long-term curative approach often reduces the need for expensive tests and surgeries.</p></div>
+      <div class="adv-card"><div class="adv-icon">🔬</div><h3>Scientifically Recognised</h3><p>Practised in over 80 countries and recognised by the WHO, homeopathy is integrated into national healthcare systems worldwide including India.</p></div>
+    </div>
+  </div>
+</section>
+
+<!-- AREAS OF PRACTICE -->
+<section id="practice">
+  <div class="inner">
+    <div class="section-header">
+      <div class="eyebrow">Areas of Practice</div>
+      <h2>Conditions We Treat</h2>
+      <p>Dr. Annapoorna provides expert homeopathic care across a wide spectrum of acute and chronic health conditions.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="practice-grid">
+      <div class="practice-card"><div class="practice-icon">🫁</div><div><h4>Respiratory Disorders</h4><p>Asthma, bronchitis, sinusitis, allergic rhinitis, recurrent colds</p></div></div>
+      <div class="practice-card"><div class="practice-icon">🦴</div><div><h4>Joint & Bone Disorders</h4><p>Arthritis, rheumatism, back pain, cervical spondylosis, gout</p></div></div>
+      <div class="practice-card"><div class="practice-icon">🌿</div><div><h4>Skin Conditions</h4><p>Eczema, psoriasis, urticaria, acne, vitiligo, hair loss</p></div></div>
+      <div class="practice-card"><div class="practice-icon">🧠</div><div><h4>Mental & Emotional Health</h4><p>Anxiety, depression, stress, insomnia, behavioural issues</p></div></div>
+      <div class="practice-card"><div class="practice-icon">🍽️</div><div><h4>Digestive Disorders</h4><p>IBS, acidity, constipation, gastritis, food intolerances</p></div></div>
+      <div class="practice-card"><div class="practice-icon">🌸</div><div><h4>Women's Health</h4><p>PCOD, menstrual irregularities, fibroids, menopause, hormonal issues</p></div></div>
+      <div class="practice-card"><div class="practice-icon">👶</div><div><h4>Paediatric Care</h4><p>Teething, colic, recurrent infections, bedwetting, tonsillitis, ADHD</p></div></div>
+      <div class="practice-card"><div class="practice-icon">🩺</div><div><h4>Thyroid & Metabolic</h4><p>Hypothyroidism, hyperthyroidism, diabetes support, obesity</p></div></div>
+      <div class="practice-card"><div class="practice-icon">💧</div><div><h4>Kidney & Urinary</h4><p>UTIs, kidney stones, bed-wetting, urinary tract issues</p></div></div>
+      <div class="practice-card"><div class="practice-icon">👁️</div><div><h4>Eye & ENT Disorders</h4><p>Conjunctivitis, stye, ear infections, hearing issues, tonsillitis</p></div></div>
+      <div class="practice-card"><div class="practice-icon">❤️</div><div><h4>Cardiac & Hypertension</h4><p>High blood pressure, palpitations, supportive cardiac care</p></div></div>
+      <div class="practice-card"><div class="practice-icon">🧬</div><div><h4>Neurological Conditions</h4><p>Migraines, vertigo, trigeminal neuralgia, nerve-related disorders</p></div></div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="inner">
+    <div class="section-header">
+      <div class="eyebrow">Patient Stories</div>
+      <h2>Words from Our Patients</h2>
+      <p>Real experiences from patients whose lives were transformed through Dr. Annapoorna's compassionate homeopathic care.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>I had been suffering from chronic skin eczema for over 7 years. Within 4 months of treatment with Dr. Annapoorna, my skin was completely clear. I am truly grateful for her patience and expertise.</p>
+        <div class="testi-author"><div class="testi-avatar">R</div><div><div class="name">Ranjitha K.</div><div class="meta">Kodigehalli, Bengaluru · Eczema</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>My 5-year-old daughter had recurring tonsillitis every other month. Dr. Annapoorna's treatment completely stopped the recurrence. It has been over a year — no antibiotics needed!</p>
+        <div class="testi-author"><div class="testi-avatar">S</div><div><div class="name">Savitha Murthy</div><div class="meta">Rajiv Gandhi Nagar · Paediatric</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>I was diagnosed with PCOD and my cycles were irregular for years. After consulting Dr. Annapoorna, within 6 months my hormonal levels normalised. Her personalised approach sets her apart.</p>
+        <div class="testi-author"><div class="testi-avatar">P</div><div><div class="name">Priya Shetty</div><div class="meta">Hebbal, Bengaluru · Women's Health</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>My asthma attacks had made life miserable. Doctor's homeopathic treatment reduced my attacks dramatically within 3 months. I now lead an active life with minimal inhaler dependence.</p>
+        <div class="testi-author"><div class="testi-avatar">M</div><div><div class="name">Mohammed Imran</div><div class="meta">Yelahanka, Bengaluru · Asthma</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>Suffering from severe anxiety and insomnia for 2 years, Dr. Annapoorna understood my whole story and prescribed remedies that brought genuine peace of mind. I sleep soundly now.</p>
+        <div class="testi-author"><div class="testi-avatar">A</div><div><div class="name">Ananya Rao</div><div class="meta">Sadashivanagar · Mental Wellness</div></div></div>
+      </div>
+      <div class="testi-card">
+        <div class="stars">★★★★★</div>
+        <div class="testi-quote">"</div>
+        <p>My father was dealing with severe knee arthritis and refused surgery. Dr. Annapoorna's treatment has given him significant pain relief over 8 months — he can now walk independently.</p>
+        <div class="testi-author"><div class="testi-avatar">V</div><div><div class="name">Vinod Nair</div><div class="meta">Mathikere, Bengaluru · Arthritis</div></div></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="inner">
+    <div class="section-header">
+      <div class="eyebrow">About Us</div>
+      <h2>Meet Dr. Annapoorna</h2>
+      <div class="divider"></div>
+    </div>
+    <div class="about-inner">
+      <div class="about-visual">
+        <div class="about-avatar-big">👩‍⚕️</div>
+        <h3>Dr. Annapoorna</h3>
+        <p class="quals-tag">Homeopathy Specialist</p>
+        <div class="qual-badges">
+          <span class="qual-badge">BHMS</span>
+          <span class="qual-badge">MD (Homeopathy)</span>
+          <span class="qual-badge">SCPH</span>
+        </div>
+      </div>
+      <div class="about-text">
+        <h2>Healing with Compassion, Science &amp; Natural Wisdom</h2>
+        <p>Dr. Annapoorna is a highly qualified and deeply experienced homeopathic physician based in Bengaluru. She holds a <strong>Bachelor of Homeopathic Medicine and Surgery (BHMS)</strong>, a <strong>Doctor of Medicine in Homeopathy (MD)</strong>, and a <strong>Specialisation in Classical and Practical Homeopathy (SCPH)</strong> — a combination that reflects both her academic excellence and her commitment to mastering the art and science of homeopathic healing.</p>
+        <p>With over a decade of clinical practice, Dr. Annapoorna has built a reputation for her thorough, empathetic consultations and her ability to treat complex, long-standing chronic ailments that have not responded to conventional medicine. She believes that each patient is unique, and her personalised treatment plans reflect this philosophy.</p>
+        <p>Her clinic in Kodigehalli, Bengaluru serves patients from across the city and beyond — many referred by long-time patients who have witnessed life-changing results. She is also passionate about preventive care and lifestyle wellness through a homeopathic lens.</p>
+        <div class="about-highlights">
+          <div class="highlight-item"><div class="hl-icon">🎓</div><span>Advanced Postgraduate Qualifications in Homeopathy</span></div>
+          <div class="highlight-item"><div class="hl-icon">🏥</div><span>10+ Years of Clinical Practice in Bengaluru</span></div>
+          <div class="highlight-item"><div class="hl-icon">❤️</div><span>Patient-Centred, Empathetic Consultations</span></div>
+          <div class="highlight-item"><div class="hl-icon">🔬</div><span>Evidence-Based Classical Homeopathy</span></div>
+          <div class="highlight-item"><div class="hl-icon">👨‍👩‍👧</div><span>Care for All Ages — Children to Elderly</span></div>
+          <div class="highlight-item"><div class="hl-icon">🌿</div><span>Specialisation in Chronic Disease Management</span></div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="inner">
+    <div class="section-header">
+      <div class="eyebrow">Visit Us</div>
+      <h2>Clinic Location &amp; Contact</h2>
+      <p>We welcome walk-ins and appointments. Reach us today to begin your healing journey.</p>
+      <div class="divider"></div>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-card">
+        <h3>🏥 Clinic Details</h3>
+        <div class="contact-row">
+          <div class="c-icon">📍</div>
+          <div>
+            <div class="c-label">Address</div>
+            <div class="c-val">Canara Bank Layout,<br>Rajiv Gandhi Nagar,<br>Kodigehalli,<br>Bengaluru, Karnataka – 560097</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="c-icon">🕐</div>
+          <div>
+            <div class="c-label">Clinic Hours</div>
+            <div class="c-val">Mon – Sat: 11:00 AM – 1:00 PM<br>Mon – Sat: 6:00 PM – 8:30 PM<br>Sunday: By Appointment</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="c-icon">🌿</div>
+          <div>
+            <div class="c-label">Speciality</div>
+            <div class="c-val">Classical &amp; Clinical Homeopathy<br>BHMS · MD · SCPH</div>
+          </div>
+        </div>
+        <div class="contact-row">
+          <div class="c-icon">🇮🇳</div>
+          <div>
+            <div class="c-label">City</div>
+            <div class="c-val">Bengaluru, Karnataka, India</div>
+          </div>
+        </div>
+      </div>
+      <div class="map-box">
+        <div class="map-icon">🗺️</div>
+        <p>Canara Bank Layout, Rajiv Gandhi Nagar,<br>Kodigehalli, Bengaluru – 560097</p>
+        <a href="https://maps.google.com/?q=Canara+Bank+Layout+Rajiv+Gandhi+Nagar+Kodigehalli+Bengaluru+560097" target="_blank">📍 Open in Google Maps</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <p>© 2025 Dr. Annapoorna (BHMS, MD, SCPH) &nbsp;·&nbsp; Homeopathy Clinic, Kodigehalli, Bengaluru &nbsp;|&nbsp; Made with <span>❤️</span> for holistic wellness</p>
+</footer>
+
+</body>
+</html>
